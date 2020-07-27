@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cm.jhispter.test</groupId>
     <artifactId>j-hipster-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>J Hipster Test</name>
+    <name>JHipster Test</name>
 
     <repositories>
         <!-- jhipster-needle-maven-repository -->
@@ -366,6 +366,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <tesSource>${java.version}</tesSource>
+                    <testTarget>${java.version}</testTarget>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -819,7 +838,7 @@
                     <version>${maven-failsafe-plugin.version}</version>
                     <configuration>
                         <!-- Due to spring-boot repackage, without adding this property test classes are not found
-                             See https://github.com/spring-projects/spring-boot/issues/6254 -->
+                        See https://github.com/spring-projects/spring-boot/issues/6254 -->
                         <classesDirectory>${project.build.outputDirectory}</classesDirectory>
                         <!-- Force alphabetical order to have a reproducible build -->
                         <runOrder>alphabetical</runOrder>
